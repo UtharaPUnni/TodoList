@@ -1,16 +1,11 @@
-package com.perfomatix.training.TodoList.employeeResource;
+package com.perfomatix.training.TodoList.resource;
 
-import com.perfomatix.training.TodoList.employeeModel.Employee;
-
-import com.perfomatix.training.TodoList.employeeService.EmployeeService;
-
+import com.perfomatix.training.TodoList.entity.Employee;
+import com.perfomatix.training.TodoList.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,7 +18,6 @@ public class EmployeeResource {
     @GetMapping("/create")
     public String create() {
         return "Hi New Employee Project Created!!!";
-
     }
 
     @GetMapping("/listemployee")
@@ -31,5 +25,8 @@ public class EmployeeResource {
         return new ResponseEntity<>(employeeService.getAllEmplyoee(), HttpStatus.OK);
     }
 
-
+    @PostMapping("/saveemployee")
+    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee) {
+        return new ResponseEntity<>(employeeService.saveEmployee(employee), HttpStatus.CREATED);
+    }
 }
