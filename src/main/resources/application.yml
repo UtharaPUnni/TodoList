@@ -1,9 +1,18 @@
 spring:
   jpa:
     hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
       ddl-auto: update
   datasource:
     url: jdbc:postgresql://localhost:5455/postgresDB
     username: postgresUser
     password: postgresPW
     driverClassName: org.postgresql.Driver
+flyway:
+  user: postgresUser
+  password: postgresPW
+  url: jdbc:postgresql://localhost:5455/postgresDB
+  locations: filesystem:db/migration
+
+
+
